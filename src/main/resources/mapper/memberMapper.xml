@@ -4,7 +4,14 @@
 
 
 <mapper namespace="Member">
+    <insert id="save" parameterType="member">
+        insert into member_table(memberId, memberPassword, memberName, memberEmail, memberMobile, memberProfileName)
+        values(#{memberId}, #{memberPassword}, #{memberName}, #{memberEmail}, #{memberMobile}, #{memberProfileName})
+    </insert>
 
+    <select id="duplicate" parameterType="String" resultType="String">
+        select memberId from member_table where memberId=#{memberId}
+    </select>
 </mapper>
 
 
