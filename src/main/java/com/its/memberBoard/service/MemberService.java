@@ -36,4 +36,9 @@ public class MemberService {
             return "no";
         }
     }
+
+    public MemberDTO login(MemberDTO memberDTO) {
+        MemberDTO loginMember = memberRepository.login(memberDTO);
+        return loginMember;
+    }
 }
