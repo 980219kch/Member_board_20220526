@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class MemberService {
@@ -49,5 +50,13 @@ public class MemberService {
 
     public void update(MemberDTO memberDTO) {
         memberRepository.update(memberDTO);
+    }
+
+    public List<MemberDTO> findAll() {
+        return memberRepository.findAll();
+    }
+
+    public void delete(Long id) {
+        memberRepository.delete(id);
     }
 }

@@ -24,6 +24,14 @@
     <select id="findById" parameterType="String" resultType="member">
         select * from member_table where memberId=#{memberId}
     </select>
+
+    <select id="findAll" resultType="member">
+        select * from member_table
+    </select>
+
+    <delete id="delete" parameterType="Long">
+        delete from member_table where id=#{id}
+    </delete>
 </mapper>
 
 

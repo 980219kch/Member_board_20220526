@@ -27,6 +27,9 @@
         <input class="btn btn-primary" type="button" onclick="boardUpdate()" value="글수정">
         <input class="btn btn-primary" type="button" onclick="boardDelete()" value="글삭제">
     </c:if>
+    <c:if test="${sessionScope.loginMemberId eq 'admin'}">
+        <input class="btn btn-primary" type="button" onclick="boardDelete()" value="글삭제">
+    </c:if>
 </body>
 <script>
     const boardUpdate = () => {
