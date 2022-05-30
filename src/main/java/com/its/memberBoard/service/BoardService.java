@@ -70,4 +70,12 @@ public class BoardService {
     public void update(BoardDTO boardDTO) {
         boardRepository.update(boardDTO);
     }
+
+    public List<BoardDTO> search(String searchType, String search) {
+        Map<String, String> searchParam = new HashMap<>();
+        searchParam.put("type", searchType);
+        searchParam.put("search", search);
+        List<BoardDTO> searchList = boardRepository.search(searchParam);
+        return searchList;
+    }
 }

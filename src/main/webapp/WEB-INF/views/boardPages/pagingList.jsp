@@ -15,7 +15,17 @@
 </head>
 <body>
     <jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
-    <h2>list</h2>
+    <div class="container">
+        <form action="/board/search" method="get">
+            <select name="searchType">
+                <option value="boardWriter">작성자</option>
+                <option value="boardTitle">제목</option>
+            </select>
+            <input type="text" name="search" placeholder="검색어입력..">
+            <input type="submit" value="검색">
+        </form>
+    </div>
+
     <div class="container">
         <table class="table">
             <tr>
