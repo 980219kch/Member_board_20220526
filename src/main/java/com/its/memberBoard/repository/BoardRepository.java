@@ -26,4 +26,11 @@ public class BoardRepository {
         return sql.selectOne("Board.count");
     }
 
+    public void updateHits(Long id) {
+        sql.update("Board.updateHits", id);
+    }
+
+    public BoardDTO findById(Long id) {
+        return sql.selectOne("Board.findById", id);
+    }
 }

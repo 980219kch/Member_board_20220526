@@ -39,6 +39,13 @@ public class BoardController {
         return "boardPages/pagingList";
     }
 
-
+    @GetMapping("/detail")
+    public String findById(@RequestParam("id") Long id, Model model,
+                           @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+        BoardDTO boardDTO = boardService.findById(id);
+        model.addAttribute("board", boardDTO);
+        model.addAttribute("page", page);
+        return "boardPages/detail";
+    }
 
 }
