@@ -43,11 +43,12 @@ public class MemberController {
     @PostMapping("/login")
     public String login(@ModelAttribute MemberDTO memberDTO, Model model, HttpSession session) {
         MemberDTO loginMember = memberService.login(memberDTO);
-        if(loginMember != null) {
+        if (loginMember != null) {
             System.out.println("로그인 성공");
             model.addAttribute("loginMember", loginMember);
-            session.setAttribute("loginMemberId", loginMember.getMemberId());;
-            return "boardPages/list";
+            session.setAttribute("loginMemberId", loginMember.getMemberId());
+            ;
+            return "redirect:/board/paging";
         } else {
             System.out.println("로그인 실패");
             return "memberPages/login";
@@ -57,7 +58,21 @@ public class MemberController {
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
+        System.out.println("로그아웃 성공");
         return "index";
     }
 
+    @GetMapping("/my-page")
+    public String myPage(HttpSession session, Model model) {
+        String memberId = (String) session.getAttribute("loginMemberId");
+        MemberDTO memberDTO = memberService.findById(memberId);
+        model.addAttribute("member", memberDTO);
+        return "memberPages/myPage";
+    }
+
+    @PostMapping("/update")
+    public String update(@ModelAttribute MemberDTO memberDTO) {
+        memberService.update(memberDTO);
+        return "redirect:/board/paging";
+    }
 }

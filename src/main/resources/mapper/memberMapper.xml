@@ -16,6 +16,14 @@
     <select id="login" parameterType="member" resultType="member">
         select * from member_table where memberId=#{memberId} and memberPassword=#{memberPassword}
     </select>
+
+    <update id="update" parameterType="member">
+        update member_table set memberName=#{memberName},memberEmail=#{memberEmail},memberMobile=#{memberMobile} where memberId=#{memberId}
+    </update>
+
+    <select id="findById" parameterType="String" resultType="member">
+        select * from member_table where memberId=#{memberId}
+    </select>
 </mapper>
 
 

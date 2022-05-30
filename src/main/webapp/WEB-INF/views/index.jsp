@@ -17,8 +17,8 @@
         const loginForm = () => {
             location.href = "/member/login";
         }
-        const findAll = () => {
-            location.href = "/board/findAll";
+        const paging = () => {
+            location.href = "/board/paging";
         }
     </script>
 </head>
@@ -26,6 +26,6 @@
     <h2>index.jsp</h2>
     <button class="btn btn-outline-success" onclick="saveForm()">회원가입</button>
     <button class="btn btn-outline-success" onclick="loginForm()">로그인</button>
-    <button class="btn btn-outline-success" onclick="findAll()">글목록</button>
+    <button class="btn btn-outline-success" onclick="paging()">글목록</button>
 </body>
 </html>
