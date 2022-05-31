@@ -16,12 +16,23 @@
     <header>
         <a href="/">Home</a> &nbsp;
         <a href="/board/save">글쓰기</a> &nbsp;
-        <a href="/member/my-page">마이페이지</a>&nbsp;
-        <a href="/member/logout">로그아웃</a> &nbsp;&nbsp;
+        <c:if test="${sessionScope.loginMemberId != null}">
+            <a href="/member/my-page">마이페이지</a> &nbsp;
+        </c:if>
+        <c:choose>
+            <c:when test="${sessionScope.loginMemberId != null}">
+                <a href="/member/logout">로그아웃</a>
+            </c:when>
+            <c:otherwise>
+                <a href="/member/login">로그인</a>
+            </c:otherwise>
+        </c:choose> &nbsp;
         <c:if test="${sessionScope.loginMemberId eq 'admin'}">
             <a href="/member/admin">관리자페이지</a>
-        </c:if>
-        현재 로그인 중인 아이디: ${sessionScope.loginMemberId}
+        </c:if> &nbsp;
+        <c:if test="${sessionScope.loginMemberId != null}">
+            현재 로그인 중인 아이디: ${sessionScope.loginMemberId}
+        </c:if> &nbsp;
     </header>
 </body>
 </html>

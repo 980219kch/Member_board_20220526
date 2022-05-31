@@ -1,8 +1,10 @@
 package com.its.memberBoard.controller;
 
 import com.its.memberBoard.dto.BoardDTO;
+import com.its.memberBoard.dto.CommentDTO;
 import com.its.memberBoard.dto.PageDTO;
 import com.its.memberBoard.service.BoardService;
+import com.its.memberBoard.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +20,9 @@ public class BoardController {
 
     @Autowired
     private BoardService boardService;
+
+    @Autowired
+    private CommentService commentService;
 
     @GetMapping("/save")
     public String saveForm() {
@@ -46,6 +51,8 @@ public class BoardController {
         BoardDTO boardDTO = boardService.findById(id);
         model.addAttribute("board", boardDTO);
         model.addAttribute("page", page);
+        List<CommentDTO> commentDTOList = commentService.findAll(id);
+        model.addAttribute("commentList", commentDTOList);
         return "boardPages/detail";
     }
 
