@@ -57,7 +57,7 @@ public class BoardController {
     }
 
     @GetMapping("/update")
-    public String updateForm(@RequestParam("id") Long id, Model model, HttpSession session) {
+    public String updateForm(@RequestParam("id") Long id, Model model) {
         BoardDTO boardDTO = boardService.findById(id);
         model.addAttribute("board", boardDTO);
         return "/boardPages/update";

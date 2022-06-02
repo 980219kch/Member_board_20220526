@@ -21,8 +21,8 @@
         update member_table set memberName=#{memberName},memberEmail=#{memberEmail},memberMobile=#{memberMobile} where memberId=#{memberId}
     </update>
 
-    <select id="findById" parameterType="String" resultType="member">
-        select * from member_table where memberId=#{memberId}
+    <select id="findById" parameterType="Long" resultType="member">
+        select * from member_table where id=#{id}
     </select>
 
     <select id="findAll" resultType="member">

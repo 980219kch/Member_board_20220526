@@ -25,8 +25,8 @@ public class MemberRepository {
         return sql.selectOne("Member.login", memberDTO);
     }
 
-    public MemberDTO findById(String memberId) {
-        return sql.selectOne("Member.findById", memberId);
+    public MemberDTO findById(Long id) {
+        return sql.selectOne("Member.findById", id);
     }
 
     public void update(MemberDTO memberDTO) {

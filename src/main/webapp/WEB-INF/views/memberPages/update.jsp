@@ -21,11 +21,11 @@
         <h2 class="display-4 fw-normal">myPage</h2>
         <div class="py-5">
             <form action="/member/update" method="post" name="updateForm">
-                아이디: <input class="form-control mb-2" type="text" name="memberId" value="${member.memberId}" readonly>
+                아이디: <input class="form-control mb-2" type="text" name="memberId" value="${updateMember.memberId}" readonly>
                 비밀번호: <input class="form-control mb-2" type="text" id="pwCheck" name="memberPassword" placeholder="비밀번호를 확인하세요.">
-                이름: <input class="form-control mb-2" type="text" name="memberName" value="${member.memberName}">
-                이메일: <input class="form-control mb-2" type="text" name="memberEmail" value="${member.memberEmail}">
-                전화번호: <input class="form-control mb-2" type="text" name="memberMobile" value="${member.memberMobile}">
+                이름: <input class="form-control mb-2" type="text" name="memberName" value="${updateMember.memberName}">
+                이메일: <input class="form-control mb-2" type="text" name="memberEmail" value="${updateMember.memberEmail}">
+                전화번호: <input class="form-control mb-2" type="text" name="memberMobile" value="${updateMember.memberMobile}">
                 <input class="btn btn-primary" type="button" onclick="update()" value="회원정보 수정">
             </form>
         </div>
@@ -34,7 +34,7 @@
 <script>
     const update = () => {
         const pwCheck = document.getElementById("pwCheck").value;
-        const pwDB = `${member.memberPassword}`;
+        const pwDB = `${updateMember.memberPassword}`;
         if(pwCheck == pwDB) {
             updateForm.submit();
         } else {

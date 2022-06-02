@@ -27,7 +27,7 @@
                 <th></th>
 
             </tr>
-            <c:forEach items="${member}" var="member">
+            <c:forEach items="${memberList}" var="member">
                 <tr>
                     <td>${member.id}</td>
                     <td>${member.memberId}</td>

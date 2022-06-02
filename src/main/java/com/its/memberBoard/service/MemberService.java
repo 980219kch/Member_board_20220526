@@ -43,8 +43,8 @@ public class MemberService {
         return loginMember;
     }
 
-    public MemberDTO findById(String memberId) {
-        MemberDTO memberDTO = memberRepository.findById(memberId);
+    public MemberDTO findById(Long id) {
+        MemberDTO memberDTO = memberRepository.findById(id);
         return memberDTO;
     }
 

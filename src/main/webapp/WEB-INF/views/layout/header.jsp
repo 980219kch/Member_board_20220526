@@ -10,23 +10,19 @@
 
 <html>
 <head>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
 <body>
     <header>
         <a href="/">Home</a> &nbsp;
-        <a href="/board/save">글쓰기</a> &nbsp;
+        <a href="" id="boardSave" onclick="boardSave()">글쓰기</a> &nbsp;
         <c:if test="${sessionScope.loginMemberId != null}">
-            <a href="/member/my-page">마이페이지</a> &nbsp;
+            <a href="/member/update">마이페이지</a> &nbsp;
         </c:if>
-        <c:choose>
-            <c:when test="${sessionScope.loginMemberId != null}">
-                <a href="/member/logout">로그아웃</a>
-            </c:when>
-            <c:otherwise>
-                <a href="/member/login">로그인</a>
-            </c:otherwise>
-        </c:choose> &nbsp;
+        <c:if test="${sessionScope.loginMemberId != null}">
+            <a href="/member/logout">로그아웃</a> &nbsp;
+        </c:if>
+
         <c:if test="${sessionScope.loginMemberId eq 'admin'}">
             <a href="/member/admin">관리자페이지</a>
         </c:if> &nbsp;
@@ -35,4 +31,16 @@
         </c:if> &nbsp;
     </header>
 </body>
+<script>
+    const boardSave = () => {
+        const id = '${sessionScope.loginMemberId}';
+        console.log(id);
+        if(id.length == 0) {
+            alert("먼저 로그인 하세요.");
+            document.getElementById("boardSave").href = "/";
+        } else {
+            document.getElementById("boardSave").href = "/board/save";
+        }
+    }
+</script>
 </html>

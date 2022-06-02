@@ -48,7 +48,6 @@ public class MemberController {
             System.out.println("로그인 성공");
             model.addAttribute("loginMember", loginMember);
             session.setAttribute("loginMemberId", loginMember.getMemberId());
-            ;
             return "redirect:/board/paging";
         } else {
             System.out.println("로그인 실패");
@@ -63,12 +62,12 @@ public class MemberController {
         return "index";
     }
 
-    @GetMapping("/my-page")
-    public String myPage(HttpSession session, Model model) {
-        String memberId = (String) session.getAttribute("loginMemberId");
-        MemberDTO memberDTO = memberService.findById(memberId);
-        model.addAttribute("member", memberDTO);
-        return "memberPages/myPage";
+    @GetMapping("/update")
+    public String updateForm(HttpSession session, Model model) {
+        Long id = (Long) session.getAttribute("loginId");
+        MemberDTO memberDTO = memberService.findById(id);
+        model.addAttribute("updateMember", memberDTO);
+        return "memberPages/update";
     }
 
     @PostMapping("/update")
@@ -79,13 +78,13 @@ public class MemberController {
 
     @GetMapping("/admin")
     public String admin() {
-        return "memberPages/admin";
+        return "adminPage/admin";
     }
 
     @GetMapping("/findAll")
     public String findAll(Model model) {
         List<MemberDTO> memberDTOList = memberService.findAll();
-        model.addAttribute("member", memberDTOList);
+        model.addAttribute("memberList", memberDTOList);
         return "memberPages/list";
     }
 
